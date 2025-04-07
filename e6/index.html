@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Космическая викторина</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключение шрифта DotGothic16 -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Кино и космос</h1>
+        <div id="intro" class="intro-text">
+            <p>Кинофильмы о космосе всегда привлекали внимание зрителей своей масштабностью и возможностью показать неизведанное. Одним из самых известных зарубежных фильмов является "Интерстеллар" (2014), рассказывающий о путешествии группы ученых через червоточину в поисках нового дома для человечества. В 2015 году вышел фильм "Марсианин" , основанный на романе Энди Уира, где астронавт Марк Уотни оказывается один на Марсе.</p>
+            <p>Российское кино также представило свои работы о космосе. Фильм "Время первых" (2017) рассказывает о легендарном выходе Алексея Леонова в открытый космос. В 2023 году вышла драма "Вызов" , ставшая первым фильмом, частично снятым на борту Международной космической станции. Эти фильмы вдохновляют зрителей и напоминают о важности освоения космоса.</p>
+            <button id="start-quiz">Начать викторину</button>
+        </div>
+        <div id="quiz" style="display: none;"></div>
+        <div class="navigation" style="display: none;">
+            <button id="prev" style="display: none;">Назад</button>
+            <button id="check">Проверить</button>
+            <button id="next" style="display: none;">Далее</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
