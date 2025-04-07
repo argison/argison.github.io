@@ -1,0 +1,118 @@
+body {
+    font-family: 'DotGothic16', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: url('https://argison.github.io/3773.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.quiz-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 300px;
+}
+
+.intro-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.question {
+    display: none;
+}
+
+.question.active {
+    display: block;
+}
+
+button {
+    padding: 14px 28px;
+    margin: 5px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+#copy-code {
+    background: #2196F3; /* Синий цвет для кнопки копирования */
+    margin-left: 10px;
+    padding: 10px 20px; /* Меньший размер, чтобы не отвлекать от основного контента */
+    font-size: 16px;
+}
+
+#copy-code:hover {
+    background: #1976D2;
+}
+
+#result {
+    font-weight: bold;
+    margin-top: 20px;
+    display: none;
+    text-align: center;
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+.feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.correct {
+    background: rgba(0, 255, 0, 0.3);
+}
+
+.incorrect {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    width: 300px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.options label {
+    display: block;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.match-subquestion {
+    margin-bottom: 10px;
+}
+
+.match-subquestion select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    color: black;
+}
