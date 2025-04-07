@@ -178,29 +178,9 @@ function updateFeedback() {
     const currentQ = document.querySelector(`.question[data-number="${currentQuestion}"]`);
     const feedback = currentQ.querySelector('.feedback');
     if (answers[currentQuestion]) {
-        const selected = answers[currentQuestion];
-        const correct = quizData[currentQuestion].type === "match" 
-            ? quizData[currentQuestion].matches.map(m => m.correct) 
-            : quizData[currentQuestion].correct;
-        let isCorrect = false;
-
-        if (quizData[currentQuestion].type === "radio" || quizData[currentQuestion].type === "text" || 
-            quizData[currentQuestion].type === "number") {
-            isCorrect = selected === correct;
-        } else if (quizData[currentQuestion].type === "date") {
-            const normalizedSelected = selected.replace(/\s/g, '').toLowerCase();
-            const normalizedCorrect = correct.replace(/\s/g, '').toLowerCase();
-            isCorrect = normalizedSelected === normalizedCorrect;
-        } else if (quizData[currentQuestion].type === "checkbox") {
-            isCorrect = JSON.stringify(selected.sort()) === JSON.stringify(correct.sort());
-        } else if (quizData[currentQuestion].type === "match") {
-            isCorrect = JSON.stringify(selected) === JSON.stringify(correct);
-        }
-
-        feedback.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
-        feedback.innerHTML = isCorrect 
-            ? 'Правильно!' 
-            : `Неправильно. Правильный ответ: ${Array.isArray(correct) ? correct.join(', ') : correct}`;
+        // Убираем отображение правильного/неправильного ответа
+        feedback.className = 'feedback';
+        feedback.innerHTML = ''; // Ничего не показываем
     } else {
         feedback.className = 'feedback';
         feedback.innerHTML = '';
@@ -213,7 +193,7 @@ function checkAnswer() {
     let selected;
 
     if (quizData[currentQuestion].type === "radio") {
-        selected = currentQ.querySelector(`input[name=question${currentQuestion}]:checked`);
+        selected = currentQ.querySelector(`input[name="question${currentQuestion}"]:checked`);
         if (!selected) {
             alert('Пожалуйста, выберите ответ!');
             return;
@@ -227,7 +207,7 @@ function checkAnswer() {
         }
         answers[currentQuestion] = selected;
     } else if (quizData[currentQuestion].type === "checkbox") {
-        selected = Array.from(currentQ.querySelectorAll(`input[name=question${currentQuestion}]:checked`))
+        selected = Array.from(currentQ.querySelectorAll(`input[name="question${currentQuestion}"]:checked`))
             .map(input => input.value);
         if (selected.length === 0) {
             alert('Пожалуйста, выберите хотя бы один вариант!');
@@ -250,14 +230,15 @@ function checkAnswer() {
         answers[currentQuestion] = selected;
     } else if (quizData[currentQuestion].type === "match") {
         selected = [];
-        quizData[currentQuestion].matches.forEach((match, subIndex) => {
-            const selectedOption = currentQ.querySelector(`select[name=match${currentQuestion}-${subIndex}]`).value;
+        for (let subIndex = 0; subIndex < quizData[currentQuestion].matches.length; subIndex++) {
+            const match = quizData[currentQuestion].matches[subIndex];
+            const selectedOption = currentQ.querySelector(`select[name="match${currentQuestion}-${subIndex}"]`).value;
             if (!selectedOption) {
                 alert(`Пожалуйста, выберите описание для "${match.item}"!`);
-                throw new Error('Missing selection');
+                return;
             }
             selected.push(selectedOption);
-        });
+        }
         answers[currentQuestion] = selected;
     }
 
@@ -340,10 +321,6 @@ startButton.addEventListener('click', () => {
 
 prevButton.addEventListener('click', () => showQuestion(currentQuestion - 1));
 checkButton.addEventListener('click', () => {
-    try {
-        checkAnswer();
-    } catch (e) {
-        // Останавливаем выполнение, если пользователь не выбрал ответ в match
-    }
+    checkAnswer();
 });
 nextButton.addEventListener('click', () => showQuestion(currentQuestion + 1));
