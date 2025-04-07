@@ -178,7 +178,6 @@ function updateFeedback() {
     const currentQ = document.querySelector(`.question[data-number="${currentQuestion}"]`);
     const feedback = currentQ.querySelector('.feedback');
     if (answers[currentQuestion]) {
-        // Убираем отображение правильного/неправильного ответа
         feedback.className = 'feedback';
         feedback.innerHTML = ''; // Ничего не показываем
     } else {
@@ -242,13 +241,14 @@ function checkAnswer() {
         answers[currentQuestion] = selected;
     }
 
-    updateFeedback();
-
+    // Убираем вызов updateFeedback, так как обратная связь не отображается
     checkButton.style.display = 'none';
+
+    // Автоматический переход на следующий вопрос
     if (currentQuestion < quizData.length - 1) {
-        nextButton.style.display = 'inline';
+        showQuestion(currentQuestion + 1);
     } else {
-        setTimeout(showResults, 1000);
+        showResults();
     }
 }
 
