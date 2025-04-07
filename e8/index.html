@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Космическая викторина</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключение шрифта DotGothic16 -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Планета с кольцами</h1>
+        <div id="intro" class="intro-text">
+            <p>Сатурн — шестая планета от Солнца и второй по величине газовый гигант в Солнечной системе. Он известен своими яркими кольцами, состоящими из ледяных частиц, камней и пыли. Сатурн почти полностью состоит из водорода и гелия, а его плотность настолько мала, что он мог бы "плавать" в воде, если бы существовал достаточно большой резервуар.</p>
+            <p>Планета имеет более 80 спутников, среди которых выделяются Титан (самый крупный), Мимас и Энцелад. У Сатурна также есть мощное магнитное поле, которое защищает его и его спутники от солнечного ветра. На самой планете условия для жизни невозможны из-за экстремальных температур и давления, однако некоторые спутники, такие как Энцелад, считаются потенциальными кандидатами для поиска внеземной жизни.</p>
+            <button id="start-quiz">Начать викторину</button>
+        </div>
+        <div id="quiz" style="display: none;"></div>
+        <div class="navigation" style="display: none;">
+            <button id="prev" style="display: none;">Назад</button>
+            <button id="check">Проверить</button>
+            <button id="next" style="display: none;">Далее</button>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
