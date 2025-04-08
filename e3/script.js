@@ -272,7 +272,11 @@ function showResults() {
         <button id="copy-code">Скопировать код</button>
         <br><br>
         <div id="yandex-form-container">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc46otjgrk50k1CsN0_IX1nXHKPcuPpA7w6T_4BSjxjzTJJ5g/viewform?embedded=true" width="640" height="720" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc46otjgrk50k1CsN0_IX1nXHKPcuPpA7w6T_4BSjxjzTJJ5g/viewform?embedded=true" 
+                    width="640" height="720" frameborder="0" marginheight="0" marginwidth="0" 
+                    sandbox="allow-same-origin allow-scripts allow-forms">
+                Загрузка…
+            </iframe>
         </div>
     `;
 
@@ -282,13 +286,9 @@ function showResults() {
         navigator.clipboard.writeText(code).then(() => {
             alert('Код скопирован в буфер обмена!');
         }).catch(err => {
-            alert('Ошибка при копировании: ' + err);
+            alert('Не удалось скопировать код: ' + err);
         });
     });
-
-    const script = document.createElement('script');
-    script.src = 'https://forms.yandex.ru/_static/embed.js';
-    document.body.appendChild(script);
 }
 
 // Инициализация
